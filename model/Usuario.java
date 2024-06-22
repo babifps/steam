@@ -10,7 +10,6 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public abstract void atualizarInformacoes();
    
     public int getId() {
         return id;

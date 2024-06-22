@@ -1,22 +1,66 @@
-/* login cliente
+import model.Cliente;
+import model.Funcionario;
+import model.Administrador;
+import view.ClienteView;
+import view.AdministradorView;
+import view.FuncionarioView;
 
-Menu Cliente:
-             1. Ver Jogos Disponíveis
-(mostrar todos os jogos disponiveis e a opção de adicionar ao carrinho)
-             2. Ver Carrinho
-(mostrar os itens do carrinho e o valor total dar opção de finalizar compra, remover um item ou limpar carrinho)
-	    3. Ver meus jogos
-(mostrar todos os jogos que o cliente comprou)
-            4. Sair
+import java.util.Scanner;
 
-login administrador
+public class Main {
 
-Menu administrador:
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-           1. Ver Jogos");
-(opção de selecionar o jogo atualizar ou remover ou cadastrar novo jogo)
-           2. Ver Produtoras");
-(opção de selecionar a produtora atualizar ou remover ou cadastrar nova)
-	   3. ver Funcionarios
-(opção de selecionar o funcionario atualizar ou remover ou cadastrar novo)
-           4. Sair")
+        System.out.println("===== Sistema de Gerenciamento de Jogos =====");
+        System.out.println("Faça seu login:");
+
+        // Realiza o login e obtém o tipo de usuário
+        String tipoUsuario = realizarLogin(scanner);
+
+        switch (tipoUsuario) {
+            case "cliente":
+                Cliente cliente = new Cliente(1, "Cliente1"); // Simulação de cliente logado
+                ClienteView clienteView = new ClienteView();
+                clienteView.menuCliente(cliente);
+                break;
+            case "administrador":
+                AdministradorView administradorView = new AdministradorView();
+                administradorView.menuAdministrador();
+                break;
+            case "funcionario":
+                FuncionarioView funcionarioView = new FuncionarioView();
+                funcionarioView.menuFuncionario();
+                break;
+            default:
+                System.out.println("Tipo de usuário inválido. Encerrando o programa.");
+                break;
+        }
+
+        scanner.close();
+    }
+
+    private static String realizarLogin(Scanner scanner) {
+        System.out.println("Escolha o tipo de usuário:");
+        System.out.println("1. Cliente");
+        System.out.println("2. Administrador");
+        System.out.println("3. Funcionário");
+        System.out.print("Opção: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer do scanner
+
+        switch (opcao) {
+            case 1:
+                // Implementar lógica para login do cliente
+                return "cliente"; // Retornar "cliente" se o login for bem-sucedido
+            case 2:
+                // Implementar lógica para login do administrador
+                return "administrador"; // Retornar "administrador" se o login for bem-sucedido
+            case 3:
+                // Implementar lógica para login do funcionário
+                return "funcionario"; // Retornar "funcionario" se o login for bem-sucedido
+            default:
+                return "invalido"; // Caso a opção seja inválida
+        }
+    }
+}
