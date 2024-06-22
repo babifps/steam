@@ -1,80 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class FuncionarioController {
-    private List<Jogo> jogos;
-    private List<Produtora> produtoras;
+    private List<Funcionario> funcionarios;
 
     public FuncionarioController() {
-        this.jogos = new ArrayList<>();
-        this.produtoras = new ArrayList<>();
+        this.funcionarios = new ArrayList<>();
     }
 
-    // Métodos para Jogo
-    public void cadastrarNovoJogo(Jogo jogo) {
-        jogos.add(jogo);
+    public void criarFuncionario(Funcionario funcionario) {
+        funcionarios.add(funcionario);
     }
 
-    public void atualizarJogo(Jogo jogoAtualizado) {
-        for (Jogo jogo : jogos) {
-            if (jogo.getId() == jogoAtualizado.getId()) {
-                jogo.setNome(jogoAtualizado.getNome());
-                jogo.setPreco(jogoAtualizado.getPreco());
+    public void atualizarSalario(int idFuncionario, double novoSalario) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getId() == idFuncionario) {
+                funcionario.setSalario(novoSalario);
                 break;
             }
         }
     }
 
-    public void removerJogo(Jogo jogo) {
-        jogos.remove(jogo);
-    }
-
-    public List<Jogo> listarJogos() {
-        return jogos;
-    }
-
-    public Jogo buscarJogoPorId(int id) {
-        for (Jogo jogo : jogos) {
-            if (jogo.getId() == id) {
-                return jogo;
+    public Funcionario buscarFuncionarioPorId(int id) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getId() == id) {
+                return funcionario;
             }
         }
         return null;
     }
 
-    // Métodos para Produtora
-    public void cadastrarNovaProdutora(Produtora produtora) {
-        produtoras.add(produtora);
-    }
-
-    public void atualizarProdutora(Produtora produtoraAtualizada) {
-        for (Produtora produtora : produtoras) {
-            if (produtora.getId() == produtoraAtualizada.getId()) {
-                produtora.setNome(produtoraAtualizada.getNome());
-                break;
-            }
-        }
-    }
-
-    public void removerProdutora(Produtora produtora) {
-        produtoras.remove(produtora);
-    }
-
-    public List<Produtora> listarProdutoras() {
-        return produtoras;
-    }
-
-    public Produtora buscarProdutoraPorId(int id) {
-        for (Produtora produtora : produtoras) {
-            if (produtora.getId() == id) {
-                return produtora;
+    public Funcionario buscarFuncionarioPorEmail(String email) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getEmail().equals(email)) {
+                return funcionario;
             }
         }
         return null;
     }
 
-     public Funcionario loginFuncionario(String email, String senha) {
-        Funcionario funcionario = buscarFuncionarioPorEmail(email);
-        if (funcionario != null && funcionario.getSenha().equals(senha)) {
-            return funcionario;
-        }
-        return null;
+    public void deletarFuncionario(Funcionario funcionario) {
+        funcionarios.remove(funcionario);
+    }
+
+    public List<Funcionario> listarFuncionarios() {
+        return funcionarios;
     }
 }
