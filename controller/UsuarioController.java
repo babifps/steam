@@ -33,6 +33,47 @@ public class UsuarioController {
         usuarios.removeIf(usuario -> usuario.getId() == id);
     }
 
+     public int contarClientes() {
+        int contadorClientes = 0;
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Cliente) {
+                contadorClientes++;
+            }
+        }
+        return contadorClientes;
+    }
+
+    public int contarFuncionarios() {
+        int contadorFuncionarios = 0;
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Funcionario) {
+                contadorFuncionarios++;
+            }
+        }
+        return contadorFuncionarios;
+    }
+
+    public List<Cliente> listarClientes() {
+        List<Cliente> clientes = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Cliente) {
+                clientes.add((Cliente) usuario);
+            }
+        }
+        return clientes;
+    }
+
+    public List<Funcionario> listarFuncionarios() {
+        List<Funcionario> funcionarios = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            if (usuario instanceof Funcionario) {
+                funcionarios.add((Funcionario) usuario);
+            }
+        }
+        return funcionarios;
+    }
+}
+
     // Métodos adicionais, se necessário
 
 }
