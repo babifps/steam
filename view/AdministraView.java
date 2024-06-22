@@ -9,7 +9,7 @@ import java.util.List;
 public class AdministradorView {
 
     private UsuarioController usuarioController;
-    private Scanner scanner;
+    private Scanner scanner;}
 
     public AdministradorView() {
         this.usuarioController = new UsuarioController();
@@ -284,5 +284,5 @@ public class AdministradorView {
         List<Funcionario> funcionarios = usuarioController.listarFuncionarios();
         if (funcionarios.isEmpty()) {
             System.out.println("Não há funcionários cadastrados.");
-        } else {
+        } else }
            
