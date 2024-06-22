@@ -69,4 +69,12 @@ public class FuncionarioController {
         }
         return null;
     }
+
+     public Funcionario loginFuncionario(String email, String senha) {
+        Funcionario funcionario = buscarFuncionarioPorEmail(email);
+        if (funcionario != null && funcionario.getSenha().equals(senha)) {
+            return funcionario;
+        }
+        return null;
+    }
 }

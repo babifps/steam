@@ -74,6 +74,14 @@ public class ClienteController {
         return total;
     }
 
+    public Cliente loginCliente(String email, String senha) {
+        Cliente cliente = buscarClientePorEmail(email);
+        if (cliente != null && cliente.getSenha().equals(senha)) {
+            return cliente;
+        }
+        return null;
+    }
+
     // Métodos adicionais para manipulação de clientes, jogos, etc., conforme necessário
 
 }
