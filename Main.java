@@ -1,69 +1,22 @@
-import java.util.Scanner;
-import model.Funcionario;
-import model.Jogo;
-import model.Produtora;
-import controller.FuncionarioController;
-import controller.JogoController;
-import controller.ProdutoraController;
+/* login cliente
 
-public class Main {
+Menu Cliente:
+             1. Ver Jogos Disponíveis
+(mostrar todos os jogos disponiveis e a opção de adicionar ao carrinho)
+             2. Ver Carrinho
+(mostrar os itens do carrinho e o valor total dar opção de finalizar compra, remover um item ou limpar carrinho)
+	    3. Ver meus jogos
+(mostrar todos os jogos que o cliente comprou)
+            4. Sair
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+login administrador
 
-        FuncionarioController funcionarioController = new FuncionarioController();
-        JogoController jogoController = new JogoController();
-        ProdutoraController produtoraController = new ProdutoraController();
+Menu administrador:
 
-        
-        Funcionario novoFuncionario = new Funcionario(1, "João", 5000.0, 1);
-        funcionarioController.criarFuncionario(novoFuncionario);
-
-        Jogo novoJogo = new Jogo(1, "Super Adventure", 1);
-        jogoController.criarJogo(novoJogo);
-
-        
-        Produtora novaProdutora = new Produtora(1, "Game Studios");
-        produtoraController.criarProdutora(novaProdutora);
-
-  
-        System.out.println("Detalhes do Jogo:");
-        Jogo jogoEncontrado = jogoController.buscarJogoPorId(1);
-        if (jogoEncontrado != null) {
-            System.out.println("Nome: " + jogoEncontrado.getNome());
-            System.out.println("ID da Produtora: " + jogoEncontrado.getIdProdutora());
-        } else {
-            System.out.println("Jogo não encontrado.");
-        }
-
-        System.out.println("\nDetalhes da Produtora:");
-        Produtora produtoraEncontrada = produtoraController.buscarProdutoraPorId(1);
-        if (produtoraEncontrada != null) {
-            System.out.println("Nome: " + produtoraEncontrada.getNome());
-        } else {
-            System.out.println("Produtora não encontrada.");
-        }
-
-        
-        Funcionario funcionarioAtualizado = funcionarioController.buscarFuncionarioPorId(1);
-        if (funcionarioAtualizado != null) {
-            funcionarioAtualizado.setSalario(5500.0);
-          
-            System.out.println("\nSalário atualizado para " + funcionarioAtualizado.getSalario());
-        } else {
-            System.out.println("Funcionário não encontrado.");
-        }
-
-       
-        System.out.println("\nDeseja deletar o jogo? (s/n)");
-        String resposta = scanner.nextLine();
-        if (resposta.equalsIgnoreCase("s")) {
-            jogoController.deletarJogo(1);
-            System.out.println("Jogo deletado.");
-        } else {
-            System.out.println("Operação de exclusão cancelada.");
-        }
-
-        scanner.close();
-    }
-}
+           1. Ver Jogos");
+(opção de selecionar o jogo atualizar ou remover ou cadastrar novo jogo)
+           2. Ver Produtoras");
+(opção de selecionar a produtora atualizar ou remover ou cadastrar nova)
+	   3. ver Funcionarios
+(opção de selecionar o funcionario atualizar ou remover ou cadastrar novo)
+           4. Sair")
